@@ -5,10 +5,24 @@ import ThankYou from './components/ThankYou/ThankYou';
 import catPicture from "./assets/cat.jpg";
 import Goodbye from './components/Goodbye/Goodbye';
 import ProfileCard from './components/ProfileCard/ProfileCard';
+import {Counter} from './components/Counter/Counter';
+import PersonalGreeting from './components/PersonalGreenting/PersonalGreeting';
+import WeightCalculator from './components/WeightCalculator/WeightCalculator';
+import SpaceMissionForm from './components/SpaceMissionForm/SpaceMissionForm';
 
 function App() {
   return (
     <>
+
+        <SpaceMissionForm />
+
+        <WeightCalculator />
+
+        <PersonalGreeting />
+
+        <Counter />
+        <Counter />
+
         <Goodbye />
 
         <ProfileCard 

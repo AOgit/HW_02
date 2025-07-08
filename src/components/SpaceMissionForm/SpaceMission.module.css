@@ -1,0 +1,12 @@
+.spaceMission {
+    background-color: rgb(175, 235, 255);
+    border: 1px solid rgb(100, 180, 200);
+    padding: 20px;
+    border-radius: 50%;
+}
+.spaceMission label {
+   margin: 10px; 
+}
+.spaceMission input, .spaceMission select {
+    margin: 10px;
+}

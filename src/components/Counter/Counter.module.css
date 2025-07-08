@@ -1,0 +1,8 @@
+button {
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.inc {background-color: burlywood;}
+.decr {background-color: cornflowerblue;}
+.reset {background-color: lightgrey;}
