@@ -1,11 +1,14 @@
 import { useState } from "react";
 import style from "./SpaceMission.module.css"
+import Planet from "./Planet"
 
-export default function SpaceMissionForm() {
+export function SpaceMissionForm() {
   const [name, setName] = useState<string>("");
   const [planet, setPlanet] = useState<string>("the edge of the universe");
+
   return (
     <div className={style.spaceMission}>
+      {/* {fullName ? (<p>asfdsdf</p>) : (<p>rwooto</p>)} */}
       <h2>
         {name === ""
         ? "Please enter your name to begin your mission." 
@@ -18,11 +21,11 @@ export default function SpaceMissionForm() {
       <label>
         Planet:
         <select value={planet} onChange={(e) => setPlanet(e.target.value)} >
-            <option value="the edge of the universe" selected disabled>-</option>
-            <option value="Mars">Mars</option>
-            <option value="Venus">Venus</option>
-            <option value="Jupiter">Jupiter</option>
-            <option value="Saturn">Saturn</option>
+            <option defaultValue="the edge of the universe" disabled>-</option>
+            <option value={Planet.MARS}>{Planet.MARS}</option>
+            <option value={Planet.JUPITER}>{Planet.JUPITER}</option>
+            <option value={Planet.SATURN}>{Planet.SATURN}</option>
+            <option value={Planet.VENUS}>{Planet.VENUS}</option>
         </select>
       </label>
     </div>

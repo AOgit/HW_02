@@ -3,18 +3,26 @@ import Card from './components/Card/Card';
 import Greeting from './components/Greeting/Greeting'
 import ThankYou from './components/ThankYou/ThankYou';
 import catPicture from "./assets/cat.jpg";
-import Goodbye from './components/Goodbye/Goodbye';
+// import Goodbye from './components/Goodbye/Goodbye';
 import ProfileCard from './components/ProfileCard/ProfileCard';
-import {Counter} from './components/Counter/Counter';
-import PersonalGreeting from './components/PersonalGreenting/PersonalGreeting';
-import WeightCalculator from './components/WeightCalculator/WeightCalculator';
-import SpaceMissionForm from './components/SpaceMissionForm/SpaceMissionForm';
+// import {Counter} from './components/Counter/Counter';
+// import PersonalGreeting from './components/PersonalGreenting/PersonalGreeting';
+// import WeightCalculator from './components/WeightCalculator/WeightCalculator';
+// import SpaceMissionForm from './components/SpaceMissionForm';
+// import Demo from './components/Demo';
+// import AgePredictor from './components/AgePredictor/AgePredictor';
+import GenderPredictor from './components/GenderPredictor/GenderPredictor';
 
 function App() {
   return (
     <>
+        <GenderPredictor />
 
-        <SpaceMissionForm />
+        {/* <AgePredictor /> */}
+
+        {/* <Demo /> */}
+
+        {/* <SpaceMissionForm />
 
         <WeightCalculator />
 
@@ -23,7 +31,7 @@ function App() {
         <Counter />
         <Counter />
 
-        <Goodbye />
+        <Goodbye /> */}
 
         <ProfileCard 
         name="Эйс" 
