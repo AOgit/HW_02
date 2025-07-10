@@ -1,6 +1,7 @@
 import { useState } from "react";
+const key = import.meta.env.VITE_GENDER_API_KEY;
 
-type GenderInfo = {
+interface GenderInfo {
   name: string;
   gender: "male" | "female";
   probability: number;
@@ -16,16 +17,16 @@ export default function GenderPredictor() {
   const fetchGender = async (name:string) => {
     try {
         setErrMessage("");
-        const res = await fetch(`https://api.genderapi.io/api/?name=${name}`);
+        const res = await fetch(`https://api.genderapi.io/api/?key=${key}&name=${name}`);
         if (!res.ok) throw Error("Ошибка получения данных");
         const obj = await res.json();
         if (obj.name === "null") throw Error("К сожалению не удалось определить Ваш пол");
         setInfo({
-        name: obj.name.charAt(0).toUpperCase() + obj.name.slice(1),
-        gender: obj.gender,
-        probability: obj.probability,
-        country: obj.country,
-        remainingCredits: obj.remaining_credits,
+          name: obj.name.charAt(0).toUpperCase() + obj.name.slice(1),
+          gender: obj.gender,
+          probability: obj.probability,
+          country: obj.country,
+          remainingCredits: obj.remaining_credits,
         });
     } catch (err: unknown) {
       if (err instanceof Error) setErrMessage(err.message);

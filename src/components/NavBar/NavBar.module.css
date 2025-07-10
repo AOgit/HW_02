@@ -1,0 +1,18 @@
+.nav a{
+ margin-right: 5px;
+ padding: 5px;
+ border: 1px solid #ccc;
+}
+.nav a:nth-of-type(2),
+.nav a:nth-of-type(3) {
+  /* Стили для первых двух ссылок */
+  color: rgb(255, 29, 51);
+  font-weight: bold;
+}
+
+.nav a:nth-of-type(4),
+.nav a:nth-of-type(5) {
+  /* Стили для первых двух ссылок */
+  color: rgb(36, 108, 8);
+  font-weight: bold;
+}
