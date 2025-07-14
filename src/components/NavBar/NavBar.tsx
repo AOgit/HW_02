@@ -12,13 +12,15 @@ export default function NavBar() {
       <nav className={style.navBar}>
         <NavLink to={routes.HOME} className={classSelector}>Home</NavLink>
         <NavLink to={routes.CONTACT} className={classSelector}>Contact</NavLink>
-        <NavLink to={"/products"} className={classSelector}>Products</NavLink>
+        <NavLink to={routes.PRODUCTS} className={classSelector}>Products</NavLink>
+        <NavLink to={routes.PRODUCTS_CREATE} className={classSelector}>Create Product</NavLink>
         <NavLink to={"/users"} className={classSelector}>Users</NavLink>
-        {/* <NavLink to={routes.ABOUT} className={classSelector}>About</NavLink>
+        <NavLink to={routes.ABOUT} className={classSelector}>About</NavLink>
         <NavLink to={routes.USER_INFO} className={classSelector}>User info</NavLink>
         <NavLink to={routes.USER_SETTINGS} className={classSelector}>User settings</NavLink>
         <NavLink to={routes.REGISTRATION} className={classSelector}>Регистрация</NavLink>
-        <NavLink to={routes.GENDER_PREDICTOR} className={classSelector}>Пол</NavLink>
+        <NavLink to={"/login"} className={classSelector}>Log in</NavLink>
+       {/* <NavLink to={routes.GENDER_PREDICTOR} className={classSelector}>Пол</NavLink>
         <NavLink to={routes.AGE_PREDICTOR} className={classSelector}>Возраст</NavLink>
         <NavLink to={routes.DEMO} className={classSelector}>Демо</NavLink>
         <NavLink to={routes.SPACE_MISSION} className={classSelector}>Миссия</NavLink>

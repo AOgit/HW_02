@@ -22,6 +22,8 @@ import ProductsList from "../components/ProductsList/ProductsList";
 import ProductPage from "../pages/ProductPage/ProductPage";
 import UserList from "../pages/UserList/UserList";
 import { UserPage } from "../pages/UserPage/UserPage";
+import Login from "../pages/Login/Login";
+import { CreateProduct } from "../pages/CreateProduct/CreateProduct";
 
 export default function AppRoutes() {
   return (
@@ -30,7 +32,8 @@ export default function AppRoutes() {
             <Route index element={<Home />} />
             <Route path={routes.CONTACT} element={<Contact />} />
             <Route path={routes.ABOUT} element={<About />} />
-            <Route path={"/products"} element={<ProductsList />} />  
+            <Route path={routes.PRODUCTS} element={<ProductsList />} />  
+            <Route path={routes.PRODUCTS_CREATE} element={<CreateProduct />} />  
             <Route path={"/products/:id"} element={<ProductPage />} />
             <Route path={"/users"} element={<UserList />} />  
             <Route path={"/users/:id"} element={<UserPage />} />
@@ -39,6 +42,7 @@ export default function AppRoutes() {
               <Route path={routes.USER_SETTINGS} element={<UserSettings />} /> 
             </Route>
             <Route path={routes.REGISTRATION} element={<Registration />} />
+            <Route path={"/login"} element={<Login />} />
             <Route
               path={routes.GENDER_PREDICTOR}
               element={<GenderPredictor />}

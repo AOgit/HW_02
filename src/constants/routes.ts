@@ -18,6 +18,9 @@ export const routes = {
   ABOUT: "/about",
 
   USER_INFO: "/user/info",
-  USER_SETTINGS: "/user/settings"
+  USER_SETTINGS: "/user/settings",
+
+  PRODUCTS: "/products",
+  PRODUCTS_CREATE: "/products/create"
 
 } as const;

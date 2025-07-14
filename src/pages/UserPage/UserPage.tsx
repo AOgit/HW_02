@@ -26,6 +26,10 @@ export const UserPage = () => {
               src={user.avatar}
               alt="User avatar"
               style={{ maxWidth: "250px" }}
+              onError={(e) => {
+                (e.target as HTMLImageElement).src =
+                  "https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small_2x/default-avatar-photo-placeholder-profile-icon-vector.jpg";
+              }}
             />
           </div>
         </div>
