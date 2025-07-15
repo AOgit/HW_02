@@ -37,8 +37,8 @@ export default function AppRoutes() {
             <Route path={"/products/:id"} element={<ProductPage />} />
             <Route path={"/users"} element={<UserList />} />  
             <Route path={"/users/:id"} element={<UserPage />} />
-            <Route path='/user' element={<PanelLayout />} >
               <Route path={routes.USER_INFO} element={<UserInfo />} />
+            <Route path='/user' element={<PanelLayout />} >
               <Route path={routes.USER_SETTINGS} element={<UserSettings />} /> 
             </Route>
             <Route path={routes.REGISTRATION} element={<Registration />} />

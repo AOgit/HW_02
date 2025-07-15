@@ -2,6 +2,7 @@
 import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -22,6 +23,7 @@ interface Credentials {
 
 export const Login = () => {
   const [message, setMessage] = useState("");
+  const {setUser} = useCurrentUser();
 
   async function fetchLogin(credentials: Credentials){
   const res = await fetch ("https://api.escuelajs.co/api/v1/auth/login", 
@@ -32,7 +34,17 @@ export const Login = () => {
     });
     if (res.ok) {
       setMessage("Successfully login")
+      const {access_token} = await res.json();
+      fetchUser(access_token);
     }
+}
+
+async function fetchUser(access_token: string) {
+  const res = await fetch('https://api.escuelajs.co/api/v1/auth/profile', {
+    headers: {Authorization: `Bearer ${access_token}`},
+  });
+  const obj = await res.json();
+  setUser(obj);
 }
 
 return (

@@ -24,3 +24,8 @@ export interface User {
     role: string;
     avatar: string;
 }
+
+export interface CounterContextType {
+    counter: number | undefined;
+    setGlobalCounter: (counter: number | undefined) => void;
+}

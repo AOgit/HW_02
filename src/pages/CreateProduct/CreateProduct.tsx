@@ -1,9 +1,10 @@
 import { Formik, Form, Field } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import styles from "./CreateProduct.module.css";
+import type {Category} from "../../types";
 
-const SignupSchema = Yup.object().shape({
+const CreateProductSchema = Yup.object().shape({
   title: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
@@ -13,7 +14,7 @@ const SignupSchema = Yup.object().shape({
     .min(2, "Too Short!")
     .max(500, "Too Long!")
     .required("Required"),
-  categoryId: Yup.number()
+  category: Yup.number()
     .integer("Category ID must be an integer")
     .required("Required"),
   images: Yup.string()
@@ -21,18 +22,34 @@ const SignupSchema = Yup.object().shape({
     .required("Required"),
 });
 
-interface Product {
-  title: string;
-  price: number;
-  description: string;
-  categoryId: number;
-  images: string[];
-}
+// interface Product {
+//   title: string;
+//   price: string;
+//   description: string;
+//   category: string;
+//   images: string;
+// }
 
-export const CreateProduct = () => {
+  interface ProductCreateDto {
+        title: string;
+        price: number;
+        description: string;
+        categoryId: number;
+        images: string[];
+    }
+
+  export const CreateProduct = () => {
   const [message, setMessage] = useState("");
+  const [categories, setCategories] = useState<Category[]>([]);
+  useEffect(()=>{fetchCategories();}, [])
 
-  async function fetchCreateProduct(product: Product) {
+  async function fetchCategories() {
+    const res = await fetch('https://api.escuelajs.co/api/v1/categories');
+    const arr = await res.json();
+    setCategories(arr);
+  }
+
+  async function fetchCreateProduct(product: ProductCreateDto) {
     const res = await fetch("https://api.escuelajs.co/api/v1/products/", {
       method: "POST",
       headers: { "Content-Type": "Application/JSON" },
@@ -50,15 +67,24 @@ export const CreateProduct = () => {
       <Formik
         initialValues={{
           title: "",
-          price: 0,
+          price: "0",
           description: "",
-          categoryId: 0,
-          images: [""],
+          category: "0",
+          images: "",
         }}
-        validationSchema={SignupSchema}
+        validationSchema={CreateProductSchema}
         onSubmit={(values) => {
-              const newValues = {...values, images: [values.images].flat()};
-          fetchCreateProduct(newValues as Product);
+
+         const {title, price, description, category, images } = values;
+
+          const newProduct = {
+            title,
+            price: Number(price),
+            description,
+            categoryId: Number(category),
+            images: [images], // даже если это просто строка
+          };
+          fetchCreateProduct(newProduct);
           console.log(values);
         }}
       >
@@ -90,17 +116,12 @@ export const CreateProduct = () => {
   </div>
 
   <div className={styles.formGroup}>
-    <label htmlFor="categoryId">Category:</label>
-    <Field as="select" id="categoryId" name="categoryId" className={styles.formSelect}>
-      <option value="">Select a category</option>
-      <option value={1}>Clothes</option>
-      <option value={2}>Electronics</option>
-      <option value={3}>Furniture</option>
-      <option value={4}>Shoes</option>
-      <option value={5}>Others</option>
+    <label htmlFor="category">Category:</label>
+    <Field as="select" id="category" name="category" className={styles.formSelect}>
+ {categories.map(c=> <option value={c.id}>{c.name}</option>)}
     </Field>
-    {errors.categoryId && touched.categoryId && (
-      <div className={styles.formError}>{errors.categoryId}</div>
+    {errors.category && touched.category && (
+      <div className={styles.formError}>{errors.category}</div>
     )}
   </div>
 

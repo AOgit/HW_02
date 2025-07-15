@@ -1,17 +1,32 @@
-import { useState } from "react";
+import {useState } from "react";
 import style from "./Counter.module.css";
+import { useCurrentCounter } from "../../hooks/userCurrentCounter";
 
 export const Counter = () => {
   
   const initialValue = 0;
   const [counter, setCounter] = useState<number>(initialValue);
+  const {setGlobalCounter} = useCurrentCounter();
   // tuple - кортеж
   // state, local state - состояние
   // setter function - функция сеттер
 
-  const handlePlus = () => setCounter((prev) => prev + 1);
-  const handleMinus = () => setCounter((prev) => prev - 1);
-  const handleReset = () => setCounter(0);
+  const handlePlus = () => {setCounter((prev) => {
+    setGlobalCounter(prev + 1); 
+    return prev + 1;
+  }
+  )};
+  const handleMinus = () => {
+    setCounter((prev) => {
+      setGlobalCounter(prev - 1);
+      return prev - 1;
+    }
+    )};
+
+  const handleReset = () => {
+    setCounter(0)
+    setGlobalCounter(0)
+  };
 
   return (
     <div>

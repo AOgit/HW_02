@@ -1,6 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AppRoutes from "./routes/AppRoutes";
+import { AuthProvider } from "./providers/AuthProvider";
+import { CounterProvider } from "./providers/CounterProvider";
 // import Card from './components/Card/Card';
 // import Greeting from './components/Greeting/Greeting'
 // import ThankYou from './components/ThankYou/ThankYou';
@@ -8,12 +10,15 @@ import AppRoutes from "./routes/AppRoutes";
 // import Goodbye from './components/Goodbye/Goodbye';
 // import ProfileCard from './components/ProfileCard/ProfileCard';
 
-
 function App() {
   return (
     <>
       <BrowserRouter>
-        <AppRoutes />
+        <CounterProvider>
+          <AuthProvider>
+            <AppRoutes />
+          </AuthProvider>
+        </CounterProvider>
       </BrowserRouter>
       {/* 
         <Goodbye />
