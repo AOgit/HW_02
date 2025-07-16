@@ -1,5 +1,5 @@
 import { routes } from "../../constants/routes";
-import style from "./NavBar.module.css";
+// import style from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { useCurrentCounter } from "../../hooks/userCurrentCounter";
@@ -8,13 +8,20 @@ export default function NavBar() {
   const classSelector = ({isActive}: {isActive:boolean})=> {
     return isActive ? "nav-link-active" : "nav-link"
   }
-  const {user} = useCurrentUser();
+  const {user, setIsAuthorized, isAuthorized} = useCurrentUser();
   const {counter} = useCurrentCounter();
+  function handleLogout() {
+      setIsAuthorized(false);
+  }
+
   return (
     <div>
       NavBar component
-      <nav className={style.navBar}>
+      {/* <nav className={style.navBar}> */}
+      <nav className="flex justify-center items-center flex-wrap gap-4 bg-pink-200 min-h-14">
         <NavLink to={routes.HOME} className={classSelector}>Home</NavLink>
+        <NavLink to={routes.TOGGLE_CARD} className={classSelector}>Toggle card</NavLink>
+        <NavLink to={routes.GALLERY} className={classSelector}>Gallery</NavLink>
         <NavLink to={routes.CONTACT} className={classSelector}>Contact</NavLink>
         <NavLink to={routes.PRODUCTS} className={classSelector}>Products</NavLink>
         <NavLink to={routes.PRODUCTS_CREATE} className={classSelector}>Create Product</NavLink>
@@ -35,6 +42,8 @@ export default function NavBar() {
         <NavLink to={routes.PERSONAL_GREETING} className={classSelector}>Приветствие</NavLink>
 
         <NavLink to={routes.PONY} className={classSelector}>Pony</NavLink> */}
+        {isAuthorized ? (<button type="button" onClick={handleLogout}>Logout</button>): null}
+      
       </nav>
     </div>
   );

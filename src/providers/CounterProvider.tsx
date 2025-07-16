@@ -3,10 +3,10 @@ import { CounterContext } from "../context/CounterContext";
 
 
 export const CounterProvider = ({children}: {children: ReactNode}) => {
-    const [counter, setGlobalCounter] = useState<number>();
+    const [counter, setCounter] = useState<number>(0);
     
     return (
-        <CounterContext.Provider value={{counter, setGlobalCounter}}>
+        <CounterContext.Provider value={{counter, setCounter}}>
         {children}
         </CounterContext.Provider>
     )

@@ -21,6 +21,9 @@ export const routes = {
   USER_SETTINGS: "/user/settings",
 
   PRODUCTS: "/products",
-  PRODUCTS_CREATE: "/products/create"
+  PRODUCTS_CREATE: "/products/create",
+
+  GALLERY: "/gallery",
+  TOGGLE_CARD: "/toggle-card"
 
 } as const;

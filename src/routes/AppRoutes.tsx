@@ -24,6 +24,8 @@ import UserList from "../pages/UserList/UserList";
 import { UserPage } from "../pages/UserPage/UserPage";
 import Login from "../pages/Login/Login";
 import { CreateProduct } from "../pages/CreateProduct/CreateProduct";
+import Gallery from "../components/Galery/Gallery";
+import ToggleCard from "../components/ToggleCard/ToggleCard";
 
 export default function AppRoutes() {
   return (
@@ -31,6 +33,8 @@ export default function AppRoutes() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path={routes.CONTACT} element={<Contact />} />
+            <Route path={routes.TOGGLE_CARD} element={<ToggleCard />} />
+            <Route path={routes.GALLERY} element={<Gallery />} />
             <Route path={routes.ABOUT} element={<About />} />
             <Route path={routes.PRODUCTS} element={<ProductsList />} />  
             <Route path={routes.PRODUCTS_CREATE} element={<CreateProduct />} />  
